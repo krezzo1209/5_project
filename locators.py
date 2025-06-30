@@ -1,80 +1,67 @@
 from selenium.webdriver.common.by import By
 
-
 class MainPageLocators:
     """Главная страница"""
-    main_form = (By.XPATH, ".//main[@class = 'App_componentContainer__2JC2W']")  # Форма главной страницы сайта
-    logo_btn = (By.XPATH, ".//div[@class = 'AppHeader_header__logo__2D0X2']")  # Кнопка главной страницы сайта
-    personal_account_btn = (By.XPATH, ".//p[contains(text(),'Личный Кабинет')]")  # Кнопка личного кабинета
-    login_account_btn = (By.XPATH, ".//button[text() = 'Войти в аккаунт']")  # Кнопка войти в аккаунт
-    constructor_btn = (By.XPATH, ".//p[text() = 'Конструктор']")  # Кнопка конструктор
-    order_feed_btn = (By.XPATH, ".//p[text() = 'Лента Заказов']")  # Кнопка лента заказов
-    bun_btn = (By.XPATH, ".//span[contains(text(),'Булки')]")  # Кнопка переключения на булки
-    sauces_btn = (By.XPATH, ".//span[text() = 'Соусы']")  # Кнопка переключения на соусы
-    toppings_btn = (By.XPATH, ".//span[text() = 'Начинки']")  # Кнопка переключения на начинки
-    place_order_button = (By.XPATH, ".//button[text() = 'Оформить заказ']")  # Кнопка оформить заказ
-    sauces = (By.XPATH, ".//h2[text() = 'Соусы']")  # Текст соусы на главной странице
-    sauces_ul = (
-    By.XPATH, "(.//ul[@class = 'BurgerIngredients_ingredients__list__2A-mT'])[2]")  # Выбор соусов на главной странице
-    bun = (By.XPATH, ".//h2[text() = 'Булки']")  # Текст булки на главной странице
-    bun_ul = (
-    By.XPATH, "(.//ul[@class = 'BurgerIngredients_ingredients__list__2A-mT'])[1]")  # Выбор булок на главной странице
-    topping = (By.XPATH, ".//h2[text() = 'Начинки']")  # Текст начинки на главной странице
-    topping_ul = (
-    By.XPATH, "(.//ul[@class = 'BurgerIngredients_ingredients__list__2A-mT'])[3]")  # Выбор начинок на главной странице
-
+    main_form = (By.CSS_SELECTOR, "main[class*='App_componentContainer']")
+    logo_btn = (By.CSS_SELECTOR, "div[class*='AppHeader_header__logo']")
+    personal_account_btn = (By.XPATH, "//p[contains(text(),'Личный Кабинет')]")
+    login_account_btn = (By.XPATH, "//button[.='Войти в аккаунт']")
+    constructor_btn = (By.XPATH, "//p[.='Конструктор']")
+    order_feed_btn = (By.XPATH, "//p[.='Лента Заказов']")
+    bun_btn = (By.XPATH, "//span[contains(text(),'Булки')]")
+    sauces_btn = (By.XPATH, "//span[.='Соусы']")
+    toppings_btn = (By.XPATH, "//span[.='Начинки']")
+    place_order_button = (By.XPATH, "//button[.='Оформить заказ']")
+    sauce_section = (By.XPATH, "//h2[.='Соусы']/following-sibling::ul")
+    bun_section = (By.XPATH, "//h2[.='Булки']/following-sibling::ul")
+    topping_section = (By.XPATH, "//h2[.='Начинки']/following-sibling::ul")
 
 class AuthPageLocators:
-    """Форма авторизации"""
-    auth_form = (By.XPATH, ".//div[@class = 'Auth_login__3hAey']")  # Форма авторизации
-    email_input = (By.XPATH, ".//input[@name = 'name']")  # Поле ввода email
-    password_input = (By.XPATH, ".//input[@name = 'Пароль']")  # Поле ввода пароля
-    login_account_btn = (By.XPATH, "//button[text() = 'Войти']")  # Кнопка войти
-    registration_btn = (By.XPATH, "//a[text() = 'Зарегистрироваться']")  # Кнопка зерегистрироваться
-    recover_btn = (By.XPATH, "//a[text() = 'Восстановить пароль']")  # Кнопка восстановить пароль
-    constructor_btn = (By.XPATH, ".//p[text() = 'Конструктор']")  # Кнопка конструктор
-    order_feed_btn = (By.XPATH, ".//p[text() = 'Лента Заказов']")  # Кнопка лента заказов
-    logo_btn = (By.XPATH, ".//div[@class = 'AppHeader_header__logo__2D0X2']")  # Кнопка главной страницы сайта
-    personal_account_btn = (By.XPATH, ".//p[text() = 'Личный Кабинет']")  # Кнопка личного кабинета
-
+    """Авторизация"""
+    auth_form = (By.CSS_SELECTOR, "div[class*='Auth_login']")
+    email_input = (By.CSS_SELECTOR, "input[type='email']")
+    password_input = (By.CSS_SELECTOR, "input[type='password']")
+    login_btn = (By.XPATH, "//button[.='Войти']")
+    registration_btn = (By.XPATH, "//a[.='Зарегистрироваться']")
+    recover_btn = (By.XPATH, "//a[.='Восстановить пароль']")
+    constructor_btn = MainPageLocators.constructor_btn
+    order_feed_btn = MainPageLocators.order_feed_btn
+    logo_btn = MainPageLocators.logo_btn
+    personal_account_btn = MainPageLocators.personal_account_btn
 
 class RegistrationPageLocators:
-    """Форма регистрации"""
-    name_input = (By.XPATH, "(.//input[@name = 'name'])[1]")  # Поле ввода имени
-    email_input = (By.XPATH, "(.//input[@name = 'name'])[2]")  # Поле ввода email
-    password_input = (By.XPATH, ".//input[@name = 'Пароль']")  # Поле ввода пароля
-    registration_btn = (By.XPATH, ".//button[text() = 'Зарегистрироваться']")  # Кнопка зерегистрироваться
-    login_account_btn = (By.XPATH, ".//a[text() = 'Войти']")  # Кнопка войти
-    constructor_btn = (By.XPATH, ".//p[text() = 'Конструктор']")  # Кнопка конструктор
-    order_feed_btn = (By.XPATH, ".//p[text() = 'Лента Заказов']")  # Кнопка лента заказов
-    logo_btn = (By.XPATH, ".//div[@class = 'AppHeader_header__logo__2D0X2']")  # Кнопка главной страницы сайта
-    personal_account_btn = (By.XPATH, ".//p[text() = 'Личный Кабинет']")  # Кнопка личного кабинета
-    error_message_double_reg = (
-    By.XPATH, ".//p[text() = 'Такой пользователь уже существует']")  # Ошибка при повторной регистрации
-    error_message_incorrect_password = (
-    By.XPATH, ".//p[text() = 'Некорректный пароль']")  # Ошибка при вводе некорректного пароля
-
+    """Регистрация"""
+    name_input = (By.CSS_SELECTOR, "input[name='name']")
+    email_input = (By.CSS_SELECTOR, "input[type='email']")
+    password_input = (By.CSS_SELECTOR, "input[type='password']")
+    registration_btn = (By.XPATH, "//button[.='Зарегистрироваться']")
+    login_btn = (By.XPATH, "//a[.='Войти']")
+    constructor_btn = MainPageLocators.constructor_btn
+    order_feed_btn = MainPageLocators.order_feed_btn
+    logo_btn = MainPageLocators.logo_btn
+    personal_account_btn = MainPageLocators.personal_account_btn
+    error_double_user = (By.XPATH, "//p[.='Такой пользователь уже существует']")
+    error_incorrect_password = (By.XPATH, "//p[.='Некорректный пароль']")
 
 class RecoverPageLocators:
-    """Форма восстановления пароля"""
-    email_input = (By.XPATH, ".//label[text() = 'Email']")  # Поле ввода email
-    recover_btn = (By.XPATH, ".//button[text() = 'Восстановить']")  # Кнопка восстановить
-    login_account_btn = (By.XPATH, ".//a[text() = 'Войти']")  # Кнопка войти
-    constructor_btn = (By.XPATH, ".//p[text() = 'Конструктор']")  # Кнопка конструктор
-    order_feed_btn = (By.XPATH, ".//p[text() = 'Лента Заказов']")  # Кнопка лента заказов
-    logo_btn = (By.XPATH, ".//div[@class = 'AppHeader_header__logo__2D0X2']")  # Кнопка главной страницы сайта
-    personal_account_btn = (By.XPATH, ".//p[text() = 'Личный Кабинет']")  # Кнопка личного кабинета
-
+    """Восстановление пароля"""
+    email_input = (By.CSS_SELECTOR, "input[type='email']")
+    recover_btn = (By.XPATH, "//button[.='Восстановить']")
+    login_btn = (By.XPATH, "//a[.='Войти']")
+    constructor_btn = MainPageLocators.constructor_btn
+    order_feed_btn = MainPageLocators.order_feed_btn
+    logo_btn = MainPageLocators.logo_btn
+    personal_account_btn = MainPageLocators.personal_account_btn
 
 class PersonalAreaLocators:
-    """Форма личного кабинета"""
-    profile_form = (By.XPATH, ".//div[@class = 'Account_account__vgk_w']")  # Форма личного кабинета
-    profile_btn = (By.XPATH, ".//a[text() = 'Профиль']")  # Кнопка профиль
-    order_history_btn = (By.XPATH, ".//a[text() = 'История заказов']")  # Кнопка история заказов
-    exit_btn = (By.XPATH, ".//button[contains(text(),'Выход')]")  # Кнопка выход
-    save_btn = (By.XPATH, ".//button[text() = 'Сохранить']")  # Кнопка сохранить
-    cansel_btn = (By.XPATH, ".//button[text() = 'Отмена']")  # Кнопка отмена
-    constructor_btn = (By.XPATH, ".//a[@href='/']")  # Кнопка конструктор
-    order_feed_btn = (By.XPATH, ".//p[text() = 'Лента Заказов']")  # Кнопка лента заказов
-    logo_btn = (By.XPATH, ".//div[@class = 'AppHeader_header__logo__2D0X2']")  # Кнопка главной страницы сайта
-    personal_account_btn = (By.XPATH, ".//p[text() = 'Личный Кабинет']")  # Кнопка личного кабинета
+    """Личный кабинет"""
+    profile_form = (By.CSS_SELECTOR, "div[class*='Account_account']")
+    profile_btn = (By.XPATH, "//a[.='Профиль']")
+    order_history_btn = (By.XPATH, "//a[.='История заказов']")
+    exit_btn = (By.XPATH, "//button[contains(.,'Выход')]")
+    save_btn = (By.XPATH, "//button[.='Сохранить']")
+    cancel_btn = (By.XPATH, "//button[.='Отмена']")
+    constructor_btn = MainPageLocators.constructor_btn
+    order_feed_btn = MainPageLocators.order_feed_btn
+    logo_btn = MainPageLocators.logo_btn
+    personal_account_btn = MainPageLocators.personal_account_btn
